@@ -136,8 +136,7 @@ function tipNode([id, text, date]) {
   const bar = el("button", { className: "bar", type: "button", title: "Collapse" });
   bar.setAttribute("aria-label", "Collapse quote");
   bar.setAttribute("aria-expanded", "true");
-  // avoid doubled marks when the post itself opens with a quotation
-  const p = el("p", { textContent: /^["“'‘]|["”'’]$/.test(text) ? text : `“${text}”` });
+  const p = el("p", { textContent: text });
   const src = el("a", { className: "source", href: X(id), target: "_blank", rel: "noopener", textContent: "Source.", title: `Posted ${date}` });
   tip.append(bar, el("blockquote", { cite: X(id) }, p), src);
   const toggle = force => {
